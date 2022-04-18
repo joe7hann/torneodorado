@@ -1,0 +1,2 @@
+CREATE TABLE participante ( p_id INT NOT NULL AUTO_INCREMENT, p_name VARCHAR(255), p_dni INT,
+       p_apuestaId BIGINT, p_puntos BIGINT);
