@@ -26,13 +26,15 @@
 		<br>
 	    ID de apuesta:<input type="text" name="id_apuesta" class="form-control" placeholder="Ingrese ID apuesta" autofocus>
 		<br>
-	    Detalles de la apuesta:
+    _____________________________________________
+    <br>
+	    <strong>Detalles de la apuesta:</strong>
 		<br>
-	Valor apostado: <input type="text" name="valor_apostado" class="form-control" placeholder="Ingrese valor apostado" autofocus>
+	    Ganancia Total: <input type="text" name="valor_apostado" class="form-control" placeholder="Ingrese valor apostado" autofocus>
 		<br>
-	Cuota:<input type="text" name="cuota" class="form-control" placeholder="Ingrese Cuota" autofocus>
+	    Cuotas:<input type="text" name="cuota" class="form-control" placeholder="Ingrese Cuota" autofocus>
 		<br>
-	Pila de apuestas: <input type="text" name="pila_apuesta" class="form-control" placeholder="Ingrese pila de apuestas" autofocus>
+	    Pila de apuestas: <input type="text" name="pila_apuesta" class="form-control" placeholder="Ingrese cantidad de combinadas" autofocus>
           </div>
 
           
@@ -45,22 +47,22 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>Nombres</th>
             <th>DNI</th>
-            <th>ID apuesta</th>
+            <th>Nombres</th>
+            <th>IDs apuestas</th>
             <th>Puntos</th>
           </tr>
         </thead>
         <tbody>
 
           <?php
-          $query = "SELECT * FROM participante";
+          $query = "SELECT * FROM participante ORDER BY puntos DESC";
           $result_tasks = mysqli_query($conn, $query);    
 
           while($row = mysqli_fetch_assoc($result_tasks)) { ?>
           <tr>
-            <td><?php echo $row['nombres']; ?></td>
             <td><?php echo $row['dni']; ?></td>
+            <td><?php echo $row['nombres']; ?></td>
             <td><?php echo $row['id_apuesta']; ?></td>
 	    <td><?php echo $row['puntos']; ?></td>
             <td>
