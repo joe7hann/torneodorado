@@ -9,12 +9,12 @@
 
       <?php if (isset($_SESSION['message'])) { ?>
         <div class="alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show" role="alert">
-          <?= $_SESSION['message'] ?>
+          <?= $_SESSION['message']; ?>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-      <?php session_unset();
+      <?php /* session_unset(); */
       } ?>
 
       <!-- ADD TASK FORM -->
@@ -37,21 +37,36 @@
             <br>
             Pila de apuestas: <input type="text" name="pila_apuesta" class="form-control" placeholder="Ingrese cantidad de combinadas" autofocus>
           </div>
-
-
-
-          <input type="submit" name="save_task" class="btn btn-success btn-block" value="Agregar participante">
+          <input type="submit" name="save_task" class="btn btn-dorado btn-block" value="Agregar participante">
         </form>
       </div>
+      <!-- SHOW PARTICIPANT SCORE -->
+      <br>
+      <?php if (isset($_SESSION['message'])) { ?>
+        <div class="alert alert-<?= $_SESSION['message_type'] ?> alert-dismissible fade show" role="alert">
+          <strong>El participante: <?= $_SESSION['nombres']; ?> </strong>
+          <strong>tiene <?= $_SESSION['puntos']; ?> puntos</strong>
+
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <?php session_unset();
+      } ?>
     </div>
+
     <div class="col-md-8">
       <table class="table table-bordered">
-        <thead>
+        <center>
+          <h1>RANKING DEL TORNEO</h1>
+        </center>
+        <thead class="thead-dark">
           <tr>
             <th>DNI</th>
             <th>Nombres</th>
             <th>IDs apuestas</th>
             <th>Puntos</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -72,7 +87,7 @@
                 <a href="edit.php?id=<?php echo $row['dni'] ?>" class="btn btn-secondary">
                   <i class="fas fa-marker"></i>
                 </a>
-                <a href="delete_task.php?id=<?php echo $row['dni'] ?>" class="btn btn-danger">
+                <a href="delete_task.php?id=<?php echo $row['dni'] ?>" class="btn btn-dorado">
                   <i class="far fa-trash-alt"></i>
                 </a>
               </td>
@@ -84,6 +99,10 @@
         .x-size {
           width: 300px;
           overflow: auto;
+        }
+        .btn-dorado {
+          background-color: #efb810;
+          color: #fff;
         }
       </style>
     </div>

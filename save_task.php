@@ -28,8 +28,10 @@ if (isset($_POST['save_task'])) {
     die("Query Failed.");
   }
 
-   $_SESSION['message'] = 'Ingreso satisfactorio';
+  $_SESSION['message'] = 'Ingreso satisfactorio';
   $_SESSION['message_type'] = 'success';
+  $_SESSION['nombres'] = $nombres;
+  $_SESSION['puntos'] = $row['puntos'] + $puntos;
   header('Location: index.php');
 
 }
